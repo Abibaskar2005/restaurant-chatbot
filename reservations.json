@@ -1,0 +1,16 @@
+[
+    {
+        "customer_name": "Alice",
+        "party_size": 3,
+        "reservation_time": "19:00",
+        "table_number": 2,
+        "contact": "alice@example.com"
+    },
+    {
+        "customer_name": "Bob",
+        "party_size": 4,
+        "reservation_time": "20:00",
+        "table_number": 5,
+        "contact": "bob@example.com"
+    }
+]

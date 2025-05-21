@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant Chatbot</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    #chatbox { width: 100%; height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; background: #fff; }
+    input[type="text"] { width: 80%; padding: 10px; }
+    input[type="submit"] { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h2>Restaurant Reservation Chatbot</h2>
+  <div id="chatbox"></div>
+  <form id="chat-form">
+    <input type="text" id="user-input" placeholder="Type your message..." required />
+    <input type="submit" value="Send" />
+  </form>
+
+  <script>
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('user-input');
+    const chatbox = document.getElementById('chatbox');
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const userText = input.value;
+      chatbox.innerHTML += `<p><strong>You:</strong> ${userText}</p>`;
+      input.value = '';
+
+      const response = await fetch('/get', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ msg: userText })
+      });
+
+      const data = await response.json();
+      chatbox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+      chatbox.scrollTop = chatbox.scrollHeight;
+    };
+  </script>
+</body>
+</html>

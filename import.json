@@ -1,0 +1,14 @@
+{
+  "tables": [
+    {
+      "table_id": 1,
+      "seats": 4,
+      "available_times": ["6:00 PM", "7:00 PM", "8:00 PM"]
+    },
+    {
+      "table_id": 2,
+      "seats": 2,
+      "available_times": ["5:00 PM", "6:30 PM"]
+    }
+  ]
+}
