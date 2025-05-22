@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Restaurant Chatbot</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        h2 { margin-top: 30px; }
+        table, th, td {
+            border: 1px solid #888;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        table { width: 100%; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <h2>Table Availability</h2>
+    <table>
+        <tr>
+            <th>Table ID</th>
+            <th>Seats</th>
+            <th>Available Times</th>
+        </tr>
+        {% for table in tables %}
+        <tr>
+            <td>{{ table.table_id }}</td>
+            <td>{{ table.seats }}</td>
+            <td>{{ table.available_times | join(', ') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Reservations</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>People</th>
+            <th>Time</th>
+        </tr>
+        {% if reservations %}
+            {% for key, res in reservations.items() %}
+            <tr>
+                <td>{{ res.name }}</td>
+                <td>{{ res.people }}</td>
+                <td>{{ res.time }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr><td colspan="3">No reservations found</td></tr>
+        {% endif %}
+    </table>
+</body>
+</html>
